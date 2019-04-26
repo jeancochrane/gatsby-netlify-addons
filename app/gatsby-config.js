@@ -1,8 +1,24 @@
+var proxy = require("http-proxy-middleware")
+
+
 module.exports = {
   siteMetadata: {
     title: "Static App Template",
     description: "A template for building static apps with Gatsby.",
     author: "@datamade",
+  },
+  developMiddleware: app => {
+  // for avoiding CORS while developing Netlify Functions locally
+  // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+    app.use(
+      "/.netlify/functions/",
+      proxy({
+        target: "http://localhost:34567",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
   },
   plugins: [
     // Manage changes to the document <head>
@@ -36,5 +52,10 @@ module.exports = {
     // Enable Progressive Web App + Offline functionality
     // See: https://gatsby.dev/offline
     'gatsby-plugin-offline',
-  ]
+    // Make /admin/ views protected by login
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/admin/*`] },
+    },
+  ],
 }

@@ -7,7 +7,8 @@ services:
       - node_modules:/usr/local/src/node_modules
     working_dir: /usr/local/src
     ports:
-      - 9000:9000
+      - 8888:8888
+      - 34567:34567
     entrypoint: yarn
     # 'start' is a custom Node.js script defined in app/package.json.
     command: start

@@ -2,3 +2,4 @@
     base = "app/"
     publish = "app/public/"
     command = "gatsby build"
+    functions = "app/src/functions"

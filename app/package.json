@@ -12,12 +12,14 @@
     "bootstrap": "^4.3.1",
     "gatsby": "^2.3.14",
     "gatsby-image": "^2.0.37",
+    "gatsby-plugin-create-client-paths": "^2.0.5",
     "gatsby-plugin-manifest": "^2.0.26",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.32",
     "gatsby-source-filesystem": "^2.0.28",
     "gatsby-transformer-sharp": "^2.1.17",
+    "netlify-identity-widget": "^1.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
@@ -31,13 +33,15 @@
     "eslint-plugin-flowtype": "2.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
-    "eslint-plugin-react": "7.x"
+    "eslint-plugin-react": "7.x",
+    "http-proxy-middleware": "^0.19.1",
+    "netlify-cli": "^2.11.14"
   },
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H 0.0.0.0 -p 9000",
-    "start": "yarn develop",
+    "start": "netlify dev -p 9000 -f src/functions -c \"yarn develop\"",
     "serve": "gatsby serve",
     "lint": "eslint src/components/*.js src/pages/*.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
