@@ -18,8 +18,18 @@
     - Identity and Functions integrate nicely here: If you send along a JSON
       Web Token in the `Authorization` header to a Netlify Function, the
       Function will decode the `user` claim for you
-        - This maybe doesn't work in local development? Need to investigate
-          Netlify Dev on this point.
+        - This seems like it doesn't work in local development -- that's a big
+          problem.
+
+- Identity is not straightforward to set up. I struggled to set up an `/admin/`
+  route following the docs that could authenticate invite-only users.
+    - Flow is also not super intuitive. Pretty much requires using the
+      `netlify-identity-widget`; otherwise is very complicated.
+    - Only one tenant per application, meaning that dev/staging/prod all share
+      the same users.
+
+- Users report some difficulty bundling dependencies when deploying Functions
+  to production.
 
 ## Identity ([full docs](https://www.netlify.com/docs/identity/))
 

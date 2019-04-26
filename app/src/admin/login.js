@@ -1,5 +1,6 @@
 import React from "react"
 import { navigate } from "gatsby"
+
 import { handleLogin, initAuth } from "./services/auth"
 
 class Login extends React.Component {
@@ -13,7 +14,7 @@ class Login extends React.Component {
     return (
       <>
         <h1>Log in</h1>
-        <button onClick={this.handleSubmit}>log in</button>
+        <div data-netlify-identity-button></div>
       </>
     )
   }
